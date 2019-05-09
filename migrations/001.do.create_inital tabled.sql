@@ -1,0 +1,7 @@
+CREATE TABLE bookmarks  (
+  id SERIAL NOT NULL PRIMARY KEY,
+  title VARCHAR(20) NOT NULL,
+  url VARCHAR(150) NOT NULL,
+  description TEXT,
+  rating SMALLSERIAL
+);
