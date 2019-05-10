@@ -7,7 +7,7 @@ const app = require('../src/app');
 const testBookmarks = require('./bookmark-fixtures');
 
 
-describe.only('All CRUD endpoints working', () =>{
+describe('All CRUD endpoints working', () =>{
   let db;
   const table = 'bookmarks';
 
@@ -31,7 +31,7 @@ describe.only('All CRUD endpoints working', () =>{
     return db.destroy();
   });
 
-  describe.skip('GET endpoints resolve correctly', () => {
+  describe('GET endpoints resolve correctly', () => {
   
     context('DB has bookmarks', () => {
       beforeEach('Initialize bookmarks', () => {
@@ -40,52 +40,56 @@ describe.only('All CRUD endpoints working', () =>{
           .into(table);
       });
   
-      it('GET/bookmarks resolves with all bookmarks', () => {
+      it('GET/api/bookmarks resolves with all bookmarks', () => {
         return request(app)
-          .get('/bookmarks')
+          .get('/api/bookmarks')
           .set('Authorization', 'a abcd')
           .expect(200, testBookmarks);
           
       });
   
-      it('GET/bookmarks/:bookmark_id resolves with a specific bookmark', () => {
+      it('GET/api/bookmarks/:bookmark_id resolves with a specific bookmark', () => {
         return request(app)
-          .get('/bookmarks/2')
+          .get('/api/bookmarks/5')
           .set('Authorization', 'a abcd')
-          .expect(200, testBookmarks[1]);
+          .expect(200)
+          .then( res => {
+            console.log(res);
+            expect(res.body).to.eql(testBookmarks[0]);
+          });
       });
   
-      it('GET/bookmarks/:bookmark_id resolves with no bookmark if not found', () => {
+      it('GET/api/bookmarks/:bookmark_id resolves with no bookmark if not found', () => {
         return request(app)
-          .get('/bookmarks/10')
-          .set('Authorization', 'a abcd')
-          .expect(404);
-      });
-  
-      it('GET/bookmarks/:bookmark_id Handles unauthorzied access', () => {
-        return request(app)
-          .get('/bookmarks/10')
-          .set('Authorization', 'a lbcd')
-          .expect(401);
-      });
-  
-      it('GET/bookmarks/ Handles unauthorzied access', () => {
-        return request(app)
-          .get('/bookmarks')
-          .set('Authorization', 'a lbcd')
-          .expect(401);
-      });
-  
-      it('GET/bookmlkarks/ Handles wrong endpoint', () => {
-        return request(app)
-          .get('/booklkarks')
+          .get('/api/bookmarks/90')
           .set('Authorization', 'a abcd')
           .expect(404);
       });
   
-      it('GET/bookmlkarks/ Handles wrong endpoint with no authorization', () => {
+      it('GET/api/bookmarks/:bookmark_id Handles unauthorzied access', () => {
         return request(app)
-          .get('/bookmarks')
+          .get('/api/bookmarks/10')
+          .set('Authorization', 'a lbcd')
+          .expect(401);
+      });
+  
+      it('GET/api/bookmarks/ Handles unauthorzied access', () => {
+        return request(app)
+          .get('/api/bookmarks')
+          .set('Authorization', 'a lbcd')
+          .expect(401);
+      });
+  
+      it('GET/api/bookmlkarks/ Handles wrong endpoint', () => {
+        return request(app)
+          .get('/api/booklkarks')
+          .set('Authorization', 'a abcd')
+          .expect(404);
+      });
+  
+      it('GET/api/bookmlkarks/ Handles wrong endpoint with no authorization', () => {
+        return request(app)
+          .get('/api/bookmarks')
           .set('Authorization', 'a abkd')
           .expect(401);
       });
@@ -93,17 +97,17 @@ describe.only('All CRUD endpoints working', () =>{
   
     context('DB does not have bookmarks', ()=> {
       
-      it('GET/bookmarks resolves with no bookmarks when empty', () => {
+      it('GET/api/bookmarks resolves with no bookmarks when empty', () => {
         return request(app)
-          .get('/bookmarks')
+          .get('/api/bookmarks')
           .set('Authorization', 'a abcd')
           .expect(200, []);
           
       });
       
-      it('GET/bookmarks resolves with no bookmarks when empty', () => {
+      it('GET/api/bookmarks resolves with no bookmarks when empty', () => {
         return request(app)
-          .get('/bookmarks/2')
+          .get('/api/bookmarks/2')
           .set('Authorization', 'a abcd')
           .expect(404);
           
@@ -111,7 +115,7 @@ describe.only('All CRUD endpoints working', () =>{
     });  
   });
   
-  describe.skip('PUSH requests resolve correctly', () => {
+  describe('PUSH requests resolve correctly', () => {
     const newData = {
       id:1,
       title: 'Thinkful',
@@ -126,36 +130,36 @@ describe.only('All CRUD endpoints working', () =>{
         return db.insert(testBookmarks).into(table);
       });
 
-      it('PUSH /bookmarks Resolves a POST request with no data sent', () => {
+      it('PUSH /api/bookmarks Resolves a POST request with no data sent', () => {
         return request(app)
-          .post('/bookmarks')
+          .post('/api/bookmarks')
           .set('Authorization', 'a abcd')
           .send({})
           .expect(400);
       });
 
-      it('PUSH /bookmarks/1 Resolves a POST to wrong endpoint', () => {
+      it('PUSH /api/bookmarks/1 Resolves a POST to wrong endpoint', () => {
         return request(app)
-          .post('/bookmarks/1')
+          .post('/api/bookmarks/1')
           .set('Authorization', 'a abcd')
           .send({})
           .expect(404);
       });
 
-      it('PUSH /bookmarks Resolves a POST with no Authorization', () => {
+      it('PUSH /api/bookmarks Resolves a POST with no Authorization', () => {
         return request(app)
-          .post('/bookmarks')
+          .post('/api/bookmarks')
           .set('Authorization', 'a abcld')
           .send(newData)
           .expect(401);
       });
 
-      it('PUSH /bookmarks Resolves a POST and returns the location and id of the new', () => {
+      it('PUSH /api/bookmarks Resolves a POST and returns the location and id of the new', () => {
         return request(app)
-          .post('/bookmarks')
+          .post('/api/bookmarks')
           .set('Authorization', 'a abcd')
           .send(newData)
-          .expect('location', 'localhost:8080/bookmarks/1')
+          .expect('location', '/api/bookmarks/1')
           .expect(201)
           .then(res => {
             expect(res.body).to.eql(newData);
@@ -168,7 +172,7 @@ describe.only('All CRUD endpoints working', () =>{
   
     context('Given an XSS attack article', () => {
       const maliciousBookmark = {
-        id: 1,
+        id: 30,
         title: 'bad bad',
         url: ' <script>alert("xss");</script>',
         rating: 1,
@@ -178,20 +182,57 @@ describe.only('All CRUD endpoints working', () =>{
       beforeEach('insert malicious article', () => {
         return db
           .into(table)
-          .insert(maliciousBookmark);
+          .insert(maliciousBookmark)
+          .returning('id')
+          .then(console.log);
       });
 
-      it('removes XSS attack content', () => {
+      it.skip('removes XSS attack content', () => {
         return request(app)
-          .get(`/bookmarks/${maliciousBookmark.id}`)
+          .get(`/api/bookmarks/${maliciousBookmark.id}`)
           .set('Authorization', 'a abcd')
           .expect(200)
           .expect(res => {
-            expect(res.body.url).to.eql('Naughty naughty very naughty &lt;script&gt;alert(\"xss\");&lt;/script&gt;');
-            expect(res.body.description).to.eql('Bad image <img src="https://url.to.file.which/does-not.exist">. But not <strong>all</strong> bad.');
+            expect(res.body.url).to.eql('Naughty naughty very naughty &lt;script&gt;alert("xss");&lt;/script&gt;');
+            expect(res.body.description).to.eql(' &lt;script&gt;alert("xss");&lt;/script&gt;');
           });
       });
     });
+  });
+
+  describe.only('PATCH /api/articles/:article_id', () => {
+    context('Given no articles', () => {
+      it('responds with 404', () => {
+        const bookmarkid = 123456;
+        return request(app)
+          .patch(`/api/articles/${bookmarkid}`)
+          .set('Authorization', 'a abcd')
+          .expect(404, { message: 'Resource not found' });
+      });
+    });
+
+    context('Given there are articles in the database', () => {
+   
+      beforeEach('insert articles', () => {
+        return db
+          .insert(testBookmarks)
+          .into(table).returning('*').then(console.log);
+      });
+   
+      it('responds with 204 and updates the article', () => {
+        const idToUpdate = 3;
+        const updateArticle = {
+          title: 'updated',
+          description: 'updated article content',
+        };
+        return request(app)
+          .patch('/api/bookmarks/3')
+          .set('Authorization', 'a abcd')
+          .send(updateArticle)
+          .expect(204);
+      });
+    });
+
   });
 
 });

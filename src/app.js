@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
   res.send('Server running. Please make a request to /bookmarks');
 });
 
-app.use('/bookmarks', bookmarkRouter);
+app.use('/api/bookmarks', bookmarkRouter);
 
 app.use('*', (req, res, next) => {
   res.status(404).json({ message: 'Resource not found'});

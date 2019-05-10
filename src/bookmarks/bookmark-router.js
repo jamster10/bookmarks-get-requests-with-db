@@ -8,6 +8,7 @@ const { logger } = require('../util/middleware');
 const { PORT } = require('../config');
 const BookmarkService = require('../bookmark-service');
 const xss = require('xss');
+const path = require('path')
 
 const bookmarkRouter = express.Router();
 
@@ -51,7 +52,7 @@ bookmarkRouter
 
         logger.info(`bookmark with id: ${id[0]} has been added to the database`);
         return res.status(201)
-          .location(`localhost:${PORT}/bookmarks/${id[0]}`)
+          .location(path.posix.join(req.originalUrl, `/${id[0]}`))
           .json(sanitizeBookmark(newBookmark));
       })
       .catch(err => {
@@ -63,9 +64,10 @@ bookmarkRouter
   .route('/:id')
   .all((req, res, next) => {
     const { id } = req.params;
+    console.log(id)
     const knexInstance = req.app.get('db');
     BookmarkService.getBookmarkById(knexInstance, id)
-    .then(bookmark => {
+      .then(bookmark => {
         if(!bookmark){
           return res.status(404).json({message: 'Bookmark not found'});
         }
@@ -86,6 +88,19 @@ bookmarkRouter
       })
       .catch(console.log);
     
-  });
+  })
+  .patch(express.json(), (req, res, next) => {
+    const { title, rating, description } = req.body;
+    const bookmarkToUpdate = { title, rating, description };
+    BookmarkService.updateBookmark(
+      req.app.get('db'),
+      req.params.id,
+      bookmarkToUpdate
+    )
+      .then(_ => {
+        res.status(204).end();
+      })
+      .catch(next);
+      }); 
 
 module.exports = bookmarkRouter;

@@ -4,7 +4,7 @@
   "description": "Quick set up for express",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require test/setup.js",
+    "test": "mocha --require test/setup.js --bail" ,
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "predeploy": "npm audit",
