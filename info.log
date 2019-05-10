@@ -37,3 +37,66 @@
 {"message":"Unauthorized attempt using key: chick-fil-a","level":"error"}
 {"message":"Unauthorized attempt using key: chick-fil-a","level":"error"}
 {"message":"Unauthorized attempt using key: chick-fil-a","level":"error"}
+{"message":"Unauthorized attempt using key: chick-fil-a","level":"error"}
+{"message":"Unauthorized attempt using key: chick-fil-a","level":"error"}
+{"message":"Unauthorized attempt using key: chick-fil-a","level":"error"}
+{"message":"Unauthorized attempt using key: chick-fil-a","level":"error"}
+{"message":"Unauthorized attempt using key: lbcd","level":"error"}
+{"message":"Unauthorized attempt using key: lbcd","level":"error"}
+{"message":"Unauthorized attempt using key: abkd","level":"error"}
+{"message":"Unauthorized attempt using key: lbcd","level":"error"}
+{"message":"Unauthorized attempt using key: lbcd","level":"error"}
+{"message":"Unauthorized attempt using key: abkd","level":"error"}
+{"message":"Unauthorized attempt using key: lbcd","level":"error"}
+{"message":"Unauthorized attempt using key: lbcd","level":"error"}
+{"message":"Unauthorized attempt using key: abkd","level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":"bookmark with id: 1 has been added to the database","level":"info"}
+{"message":"bookmark with id: 11 has been added to the database","level":"info"}
+{"message":"bookmark with id: 12 has been added to the database","level":"info"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":"bookmark with id: 1 has been added to the database","level":"info"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":"bookmark with id: 1 has been added to the database","level":"info"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":"bookmark with id: 1 has been added to the database","level":"info"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":"bookmark with id: 1 has been added to the database","level":"info"}
+{"message":{"rating":"Rating is invalid","url":"Invalid URL. ensure it starts with http:// or https://","title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"Unauthorized attempt using key: abcld","level":"error"}
+{"message":"bookmark with id: 1 has been added to the database","level":"info"}
+{"message":"Unauthorized attempt using key: null","level":"error"}
+{"message":{"title":"Title either needed or too long (10 char max)"},"level":"error"}
+{"message":"bookmark with id: 13 has been added to the database","level":"info"}
+{"message":"bookmark with id: 14 has been added to the database","level":"info"}
+{"message":"bookmark with id: 15 has been added to the database","level":"info"}
+{"message":"No bookmark with id: 12, could be found to delete","level":"info"}
+{"message":"Bookmark with index: 2, and id: 3, has been removed","level":"info"}
+{"message":"No bookmark with id: 3, could be found to delete","level":"info"}
+{"message":"Bookmark with index: 1, and id: 2, has been removed","level":"info"}
+{"message":"No bookmark with id: 2, could be found to delete","level":"info"}
+{"message":"Bookmark with index: 1, and id: 2, has been removed","level":"info"}
+{"message":"No bookmark with id: 15, could be found to delete","level":"info"}
+{"message":"Bookmark with id: 2, has been removed","level":"info"}
